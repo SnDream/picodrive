@@ -113,6 +113,9 @@ set_platform()
     # RG99 using opendingux, with Ingenic MIPS JZ4725B
     sound_drivers="sdl"
     # mostly based on opendingux for gcw0, save device type as C define.
+    CFLAGS="$CFLAGS -flto -mplt -mno-shared -fno-PIC"
+    CFLAGS="$CFLAGS -mno-fp-exceptions -mno-check-zero-division -mframe-header-opt -fsingle-precision-constant"
+    CFLAGS="$CFLAGS -fomit-frame-pointer -falign-functions=1 -falign-jumps=1 -falign-loops=1"
     CFLAGS="$CFLAGS -D__`echo $platform | tr '[a-z]' '[A-Z]'`__"
     MFLAGS="-march=mips32"
     platform="opendingux"
